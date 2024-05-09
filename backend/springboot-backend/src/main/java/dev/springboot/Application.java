@@ -19,11 +19,11 @@ public class Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Employee employee = new Employee();
-		employee.setFirstName("Belarmino");
-		employee.setLastName("Junior");
-		employee.setEmailId("belarmino@gmail.com");
-
-		employeeRepository.save(employee);
+//		Employee employee = new Employee();
+//		employee.setFirstName("Belarmino");
+//		employee.setLastName("Junior");
+//		employee.setEmailId("belarmino@gmail.com");
+//
+//		employeeRepository.save(employee);
 	}
 }
