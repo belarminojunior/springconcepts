@@ -29,12 +29,12 @@ public class EmployeeController {
     }
 
     @GetMapping("/employees/{id}")
-    public ResponseEntity<Employee> getEmployeeById(long id) {
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable long id) {
         Employee employee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id: " + id));
         return ResponseEntity.ok(employee);
     }
 
-    @PutMapping
+    @PutMapping("/employees/{id}")
     public ResponseEntity<Employee> updateEmployee(@PathVariable long id, @RequestBody Employee employeeDetails) {
         Employee employee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id: " + id));
 
@@ -47,8 +47,8 @@ public class EmployeeController {
         return ResponseEntity.ok(updatedEmployee);
     }
 
-    @DeleteMapping
-    public ResponseEntity<Employee> deleteEmployee(@PathVariable long id) {
+    @DeleteMapping("/employees/{id}")
+    public ResponseEntity<HttpStatus> deleteEmployee(@PathVariable long id) {
         Employee employee = employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id" + id));
         employeeRepository.delete(employee);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
